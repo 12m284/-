@@ -12,6 +12,9 @@ private:
     void updateWindow();
     int getDelay();
     void drop();
+    voide clearLine();
+
+
 private:
 int delay;
 bool update;
