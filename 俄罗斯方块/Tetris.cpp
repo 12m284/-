@@ -14,8 +14,8 @@ Tetris::Tetris(int row, int clos, int left, int top, int blockSize)
   while (1)
     {
       keyEvent();
-
-
+     
+      timer += getDelay();
       
       updateWindow();
     }
