@@ -24,7 +24,13 @@ Tetris::Tetris(int row, int clos, int left, int top, int blockSize)
     }
 if (update) {
     update = false;
+  //更新游戏画面
     updateWindow();
+  //更新游戏的数据
+  clearLine();
+
+
+  
   }
 }
 
