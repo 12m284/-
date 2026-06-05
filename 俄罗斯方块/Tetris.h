@@ -14,5 +14,5 @@ private:
 
 private:
 int delay;
-
+bool update;
 };
