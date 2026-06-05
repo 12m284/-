@@ -1,5 +1,12 @@
 #pragma once
 
+struct Point {
+     int row;
+     int col;
+};
+
+
+
 class Block
 {
 public:
@@ -11,6 +18,6 @@ public:
      
 private:
 int blockType; //方块的类型
-
+Points smallBlocks[4];
 };
 
