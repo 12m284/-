@@ -1,6 +1,11 @@
 #include "Block.h"
 #include <stdlib.h>
 
+struct Point {
+     int row;
+     int col;
+};
+
 
 
 Block::Block()
@@ -16,7 +21,7 @@ int block[7][4] = {
 };
 
 //随机生成一种俄罗斯方块
-  int blockTyye = rand() % 7;
+blockTyye = 1 + rand() % 7;
   
 }
 
