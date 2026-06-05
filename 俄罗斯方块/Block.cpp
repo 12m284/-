@@ -16,7 +16,7 @@ int block[7][4] = {
 };
 
 //随机生成一种俄罗斯方块
-  rand() % 7;
+  int blockTyye = rand() % 7;
   
 }
 
