@@ -32,6 +32,7 @@ if (update) {
 
   
   }
+ }
 }
 
    void  Tetris::keyEvent()
