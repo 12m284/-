@@ -1,5 +1,6 @@
 #include "Tetris.h"
-
+#include <time.h>
+#include <stdlib.h>
 Tetris::Tetris(int row, int clos, int left, int top, int blockSize)
 {
   
@@ -7,6 +8,9 @@ Tetris::Tetris(int row, int clos, int left, int top, int blockSize)
   void Tetris::init()
 {
       delay = 30;
+
+      //配置随机种子
+      srand(time(NULL));
 }
   void Tetris::play()
 {
