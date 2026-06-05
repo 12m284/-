@@ -6,10 +6,11 @@ public:
     Block();
     void drop();
     void moveLeftRight(int offest);
-    void retate();
+    void retate();//旋转
     voide draw(int leftMargin, int topMargin);
-
+     
 private:
 int blockType; //方块的类型
+
 };
 
