@@ -16,8 +16,12 @@ int block[7][4] = {
 };
 
 //随机生成一种俄罗斯方块
-blockTyye = 1 + rand() % 7;
-  
+blockType = 1 + rand() % 7;// 1 + 0.6 => 1..7
+    // 初始化 smallBlocks
+    for(int i = 0; i < 4; i++) {
+        int value = blocks[blockType-1][i];
+        smallBlocks[i].row = value / 2;
+        smallBlocks[i].col = value % 2;
 }
 
 void Block::drop()
