@@ -12,8 +12,8 @@ Tetris::Tetris(int row, int clos, int left, int top, int blockSize)
 {
   init();
   int timer = 0;
-  while (1)
-    {
+  while (1) {
+    //接受用户的输入
       keyEvent();
      
       timer += getDelay();
