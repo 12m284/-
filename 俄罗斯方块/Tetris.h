@@ -6,5 +6,7 @@ public:
 	Tetris(int row, int clos, int left, int top, int blockSize);
 	void init();
 	void play();
-	Tetris();
+
+private:
+    void keyEvent();
 };
