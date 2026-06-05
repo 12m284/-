@@ -10,4 +10,5 @@ public:
 private:
     void keyEvent();
     void updateWindow();
+    int getDelay();
 };
