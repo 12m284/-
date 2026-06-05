@@ -11,7 +11,7 @@ private:
     void keyEvent();
     void updateWindow();
     int getDelay();
-
+    void drop();
 private:
 int delay;
 bool update;
