@@ -1,11 +1,6 @@
 #include "Block.h"
 #include <stdlib.h>
 
-struct Point {
-     int row;
-     int col;
-};
-
 
 
 Block::Block()
