@@ -20,9 +20,14 @@ Tetris::Tetris(int row, int clos, int left, int top, int blockSize)
       if  (timer > delay) {
            timer = 0;
         
-           updateWindow();
+           update = true;
     }
+if (update) {
+    update = false;
+    updateWindow();
   }
+}
+
    void  Tetris::keyEvent()
 {
 }
