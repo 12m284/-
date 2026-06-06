@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 IMAGE* Block::image[7] = { NULL, }; 
-
+IMAGE* Block::size = 36;
 Block::Block()
 {
    if (imgs[0] == NULL) {
@@ -12,8 +12,10 @@ Block::Block()
       SetWorkingImage(&imgTmp);
       for (int i = 0; i < 7, i++) {
          imgs[i] = new IMAGE;
-         getimage(imgs[i], 
+         getimage(imgs[i], i*size, 0, size, size)
    }
+   SetWorkingImage();//恢复工作区
+}
 int block[7][4] = {
     1,3,5,7,//I
     2,4,5,7,
