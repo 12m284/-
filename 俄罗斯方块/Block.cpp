@@ -6,7 +6,13 @@ IMAGE* Block::image[7] = { NULL, };
 Block::Block()
 {
    if (imgs[0] == NULL) {
-       
+       IMAGE imgTmp;
+       loadimage(&imgTmp, "res/tiles");
+
+      SetWorkingImage(&imgTmp);
+      for (int i = 0; i < 7, i++) {
+         imgs[i] = new IMAGE;
+         getimage(imgs[i], 
    }
 int block[7][4] = {
     1,3,5,7,//I
