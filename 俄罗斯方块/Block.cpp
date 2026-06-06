@@ -35,6 +35,9 @@ blockType = 1 + rand() % 7;// 1 + 0.6 => 1..7
         smallBlocks[i].col = value % 2;
 }
 
+      img = imgs[blockType - 1];
+}
+
 void Block::drop()
 {
 }
