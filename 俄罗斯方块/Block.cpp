@@ -1,10 +1,13 @@
 #include "Block.h"
 #include <stdlib.h>
 
-
+IMAGE* Block::image[7] = { NULL, }; 
 
 Block::Block()
 {
+   if (imgs[0] == NULL) {
+       
+   }
 int block[7][4] = {
     1,3,5,7,//I
     2,4,5,7,
