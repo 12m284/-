@@ -3,6 +3,18 @@
 #include <stdlib.h>
 Tetris::Tetris(int row, int clos, int left, int top, int blockSize)
 {
+  this->rows = rows;
+  this->cols = cols;
+  this->leftMargin = left;
+  this->topMargin = top;
+  this->blockSize = blockSize;
+
+   for (int i = 0; i < row; i++) {
+     vector<int> mapRow;
+     for (int j = 0; j < cols; j++) {
+       mapRow.posh_nback(o);
+     }
+   }
   
 }
   void Tetris::init()
