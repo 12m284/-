@@ -52,4 +52,9 @@ void Block::retate()
 
 void Block::draw(int leftMargin, int topMargin, )
 {
+   for (int i= 0; i < 4, i++) {
+   int x =leftMargin + smallBlocks[i].col * size;
+   int y = topMargin + smallBlocks[i].row * size;
+   putimage(x, y, img);
+}
 }
