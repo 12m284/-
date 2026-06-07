@@ -9,10 +9,10 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
   this->topMargin = top;
   this->blockSize = blockSize;
 
-   for (int i = 0; i < row; i++) {
+   for (int i = 0; i < rows; i++) {
      vector<int> mapRow;
      for (int j = 0; j < cols; j++) {
-       mapRow.posh_back(0);
+       mapRow.push_back(0);
      }
      map.push_back(mapRow);
    }
