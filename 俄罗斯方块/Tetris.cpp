@@ -1,7 +1,7 @@
 #include "Tetris.h"
 #include <time.h>
 #include <stdlib.h>
-Tetris::Tetris(int row, int clos, int left, int top, int blockSize)
+Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
 {
   this->rows = rows;
   this->cols = cols;
@@ -12,9 +12,9 @@ Tetris::Tetris(int row, int clos, int left, int top, int blockSize)
    for (int i = 0; i < row; i++) {
      vector<int> mapRow;
      for (int j = 0; j < cols; j++) {
-       mapRow.posh_nback(o);
+       mapRow.posh_back(0);
      }
-     map.push back(mapRow);
+     map.push_back(mapRow);
    }
   
 }
