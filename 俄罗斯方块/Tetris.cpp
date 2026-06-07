@@ -14,6 +14,7 @@ Tetris::Tetris(int row, int clos, int left, int top, int blockSize)
      for (int j = 0; j < cols; j++) {
        mapRow.posh_nback(o);
      }
+     map.push back(mapRow);
    }
   
 }
