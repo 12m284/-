@@ -25,7 +25,9 @@ private:
 int delay;
 bool update; //是否更新
 
-int map[20][10];
+//int map[20][10];
+//0: 空白， 没有任何方块
+//5： 表示第五种方块，其余同理
 vector<vector<int>> map;
 int row;
 int col;
