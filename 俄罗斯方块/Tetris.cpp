@@ -1,6 +1,7 @@
 #include "Tetris.h"
 #include <time.h>
 #include <stdlib.h>
+#include "Block.h>
 
 const int SPEED_NORMAL = 500;
 const int SPEED_QUICK = 50;
@@ -77,6 +78,10 @@ if (update) {
    void Tetris::updateWindow()
 {
   putimage(0, 0, &imgBg); //绘制背景图片
+
+  //测试方块
+  Block block;
+  block.draw(163.133);
 }
 //第一次调用，返回0
 //返回距离上一次调用，间隔了多少ms
