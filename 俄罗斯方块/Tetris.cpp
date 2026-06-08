@@ -78,10 +78,23 @@ if (update) {
 {
   putimage(0, 0, &imgBg); //绘制背景图片
 }
-
+//第一次调用，返回0
+//返回距离上一次调用，间隔了多少ms
 int Tetris::getDelay()
 {
-  return 0;
+  static unsigned long long lastTime = 0;
+  
+  usigned long long currentTime = GetTickCount();
+
+  if(lastTime == 0) {
+    lastTime = currentTime;
+    return 0;
+  }
+  else {
+    int ret = currentTime - lastTime;
+    lastTime = currentTime;
+    return ret;
+  }
 }
 
 void Tetris::drop()
