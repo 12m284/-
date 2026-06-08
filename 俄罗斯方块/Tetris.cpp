@@ -1,6 +1,10 @@
 #include "Tetris.h"
 #include <time.h>
 #include <stdlib.h>
+
+const int SPEED_NORMAL = 500;
+const int SPEED_QUICK = 50;
+
 Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
 {
   this->rows = rows;
@@ -20,14 +24,27 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
 }
   void Tetris::init()
 {
-      delay = 30;
+  
+      delay = SPEED_NORMAL;
 
       //配置随机种子
       srand(time(NULL));
+      //创建游戏窗口
+      initgraph(938, 896);
+  
+       //加载背景图片
+      loadimage(&imgBg, "res/bg2.png");
+       //初始化游戏区中的数据
+  char data[20][10];
+  for (int i = 0; i < rows; i++) {
+   for (int j = 0; j < cols, j++) {
+      map[i][j] = 0;
+}
 }
   void Tetris::play()
 {
   init();
+  
   int timer = 0;
   while (1) {
     //接受用户的输入
