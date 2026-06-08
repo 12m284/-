@@ -76,6 +76,19 @@ if (update) {
 
    void Tetris::updateWindow()
 {
+  putimage(0, 0, &imgBg); //绘制背景图片
 }
 
+int Tetris::getDelay()
+{
+  return 0;
+}
+
+void Tetris::drop()
+{
+}
+
+void Tetris::clearLine()
+{
+}
 
