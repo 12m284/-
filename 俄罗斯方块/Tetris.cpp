@@ -81,7 +81,7 @@ if (update) {
 
   //测试方块
   Block block;
-  block.draw(263.133);
+  block.draw(leftMargin, topMargin);
 }
 //第一次调用，返回0
 //返回距离上一次调用，间隔了多少ms
