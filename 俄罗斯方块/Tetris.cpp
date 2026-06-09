@@ -45,6 +45,10 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
   void Tetris::play()
 {
   init();
+
+nextBlock = new Block;//生成预告方块
+curBlock = nextBlock;//更新当前方块
+nextBlock = new Block;//再生成下一个方块
   
   int timer = 0;
   while (1) {
@@ -79,10 +83,19 @@ if (update) {
 {
   putimage(0, 0, &imgBg); //绘制背景图片
 
-  //测试方块
-  Block block;
-  block.draw(leftMargin, topMargin);
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < rows; i++) {
+      if(map[i][j] == 0)contime;
+
+      int x = j * lockSize + leftMargin;
+      int y = i * blockSize + topMargin;
+      putimage(x, y, map[i][j])
+        }
+  }
+  curBlock >draw(leftMargin, topMargin);
+  nextBlock->draw(689, 150);
 }
+
 //第一次调用，返回0
 //返回距离上一次调用，间隔了多少ms
 int Tetris::getDelay()
