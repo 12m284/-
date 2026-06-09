@@ -2,6 +2,7 @@
 #include <graphics.h>
 #include <vector>
 using namespace std;
+
 class Tetris
 {
 public:
@@ -35,4 +36,7 @@ int leftMargin,;
 int topMargin;
 int blockSize;
 IMAGE imgBg;//背景图片
+
+Block* curBlock;
+Block* nextBlock; //预告方块
 };
