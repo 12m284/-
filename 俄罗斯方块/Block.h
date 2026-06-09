@@ -16,13 +16,14 @@ public:
     void moveLeftRight(int offest);
     void retate();//旋转
     voide draw(int leftMargin, int topMargin);
+    static IMAGE** getImages();
 
 private:
 int blockType; //方块的类型
 Point smallBlocks[4];
 IMAGE *img;
 
-static IMAGE* imgs[7]:
+static IMAGE* imgs[7]; //int* data[7]; //int** getData()
 static int size;
 };
 
