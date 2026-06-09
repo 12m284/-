@@ -82,18 +82,23 @@ if (update) {
    void Tetris::updateWindow()
 {
   putimage(0, 0, &imgBg); //绘制背景图片
-
+  
+ IMAGE** imgs = Block::getImages();
+BeginBetchDraw();
+  
   for (int i = 0; i < rows; i++) {
     for (int j = 0; j < rows; i++) {
       if(map[i][j] == 0)contime;
 
       int x = j * lockSize + leftMargin;
       int y = i * blockSize + topMargin;
-      putimage(x, y, map[i][j])
+      putimage(x, y, img[map[i][j]-1]);
         }
   }
   curBlock >draw(leftMargin, topMargin);
   nextBlock->draw(689, 150);
+
+  EndBlockDraw();
 }
 
 //第一次调用，返回0
