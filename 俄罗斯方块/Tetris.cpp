@@ -36,7 +36,7 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
        //加载背景图片
       loadimage(&imgBg, "res/bg2.png");
        //初始化游戏区中的数据
-  char data[20][10];
+ 
   for (int i = 0; i < rows; i++) {
    for (int j = 0; j < cols, j++) {
       map[i][j] = 0;
