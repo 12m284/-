@@ -17,6 +17,7 @@ public:
     void retate();//旋转
     voide draw(int leftMargin, int topMargin);
     static IMAGE** getImages();
+     Block& operator=(const Block& other);
 
 private:
 int blockType; //方块的类型
