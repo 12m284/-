@@ -76,3 +76,17 @@ Block& Block::operator=(const Block& other)
       }
    return *this;
 }
+
+bool Block::blockInMap(const vector<vector<int>>& map)
+{
+   int rows = map.size();
+   int cols = map[0].size();
+
+   for (int i = 0; i < 4; i++) {
+     if(smallBlock[i].col < 0 || samllBlocks[i].col >= cols ||
+        smallBlock[i].row < 0 || samllBlocks[i].row >= rows ||
+        map[smallBLocks[i].row[smallBlocs[i].col]) {
+     }
+     }
+return ture;
+}
