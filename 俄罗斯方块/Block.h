@@ -1,6 +1,7 @@
 #pragma once
 #include <graphcs.h> //需要安装easyx图形库
-
+#include <vector>
+using namespace std;
 struct Point {
      int row;
      int col;
@@ -17,8 +18,10 @@ public:
     void retate();//旋转
     voide draw(int leftMargin, int topMargin);
     static IMAGE** getImages();
-     Block& operator=(const Block& other);
+    Block& operator=(const Block& other);
 
+    bool blockInMap(const vector<vector<int>>&map);
+     //Point* getSmallBlocks();
 private:
 int blockType; //方块的类型
 Point smallBlocks[4];
