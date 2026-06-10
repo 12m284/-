@@ -122,7 +122,7 @@ int Tetris::getDelay()
 
 void Tetris::drop()
 {
-  
+  bakBlock = *curBlock;
   curBlock->dorp();
   
 }
