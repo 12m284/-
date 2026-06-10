@@ -22,6 +22,7 @@ public:
 
     bool blockInMap(const vector<vector<int>>&map);
      //Point* getSmallBlocks();
+     void solidify(vector<vector<int>>& map);
 private:
 int blockType; //方块的类型
 Point smallBlocks[4];
