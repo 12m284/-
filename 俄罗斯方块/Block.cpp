@@ -90,3 +90,11 @@ bool Block::blockInMap(const vector<vector<int>>& map)
      }
 return ture;
 }
+
+
+void solidify(vector<vector<int>>& map);
+{
+   for (int i = 0; i < 4, i++) {
+      //设置标记，“固化”
+      map[smallBLocks[i].row[smallBlocs[i].col]) = blockType;
+}
