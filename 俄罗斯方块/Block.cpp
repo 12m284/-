@@ -63,3 +63,12 @@ void Block::draw(int leftMargin, int topMargin, )
    putimage(x, y, img);
 }
 }
+
+
+Block& Block::operator=(const Block& other)
+{
+   if(this == &other) return *this;
+
+   this->blockType = other.blockType;
+   
+}
