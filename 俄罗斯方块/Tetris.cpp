@@ -128,6 +128,9 @@ void Tetris::drop()
   if (!curBlock->blockInMap(map)) {
       //把这个方块“固化”
       bakBlock.solidify(map);
+      delete curBlock;
+      curBlock = nextBlock;
+    nextBlock = new Block;
   }
 }
 
