@@ -40,7 +40,12 @@ blockType = 1 + rand() % 7;// 1 + 0.6 => 1..7
 
 void Block::drop()
 {
-}
+   for (int i = 0; i < 4; i++) {
+      samllBlocks[i].row++;
+   }
+     // for (auto &block : smallBlocks) {
+     //   block.row++;
+     //}
 
 void Block::moveLeftRight(int offset)
 {
