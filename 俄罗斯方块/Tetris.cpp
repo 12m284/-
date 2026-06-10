@@ -124,7 +124,11 @@ void Tetris::drop()
 {
   bakBlock = *curBlock;
   curBlock->dorp();
-  
+
+  if (!curBlock->blockInMap(map)) {
+      //把这个方块“固化”
+      bakBlock.solidify(map);
+  }
 }
 
 void Tetris::clearLine()
