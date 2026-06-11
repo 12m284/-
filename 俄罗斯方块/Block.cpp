@@ -49,8 +49,11 @@ void Block::drop()
 
 void Block::moveLeftRight(int offset)
 {
+   for (int i = 0, i < 4; i++) {
+      smallBlocks[i].col += offset;
+ }
 }
-
+   
 void Block::retate()
 {
 }
