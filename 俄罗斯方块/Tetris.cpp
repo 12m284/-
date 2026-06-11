@@ -176,7 +176,10 @@ void Tetris::clearLine()
 
 void Tetris::moveLeftRight(int offset)
 {
+  bakBlock =*curBlock;//备份防止方块掉出边界
    curBlock->moveLeftRight(offset);
-
-  
+ 
+  if(!curBlock->blockInMap(map)) {
+      *curBlock = barBlock;//如果方块位置不合法，则保持原样
+  }
 }
