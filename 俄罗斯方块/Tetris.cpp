@@ -169,6 +169,7 @@ void Tetris::drop()
       curBlock = nextBlock;
     nextBlock = new Block;
   }
+  delay = SPEED_NORMAL;
 }
 
 void Tetris::clearLine()
@@ -184,3 +185,6 @@ void Tetris::moveLeftRight(int offset)
       *curBlock = barBlock;//如果方块位置不合法，则保持原样
   }
 }
+
+
+
