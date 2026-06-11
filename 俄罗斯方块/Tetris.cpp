@@ -174,3 +174,9 @@ void Tetris::clearLine()
 {
 }
 
+void Tetris::moveLeftRight(int offset)
+{
+   curBlock->moveLeftRight(offset);
+
+  
+}
