@@ -112,7 +112,8 @@ int dx = 0;
    }
 
   if (dx != 0) {
- 
+   moveLeftRight(dx);
+   update = ture;
  }
 
    void Tetris::updateWindow()
