@@ -1,6 +1,7 @@
 #include "Tetris.h"
 #include <time.h>
 #include <stdlib.h>
+#include <conio.h>
 #include "Block.h>
 
 const int SPEED_NORMAL = 500;
@@ -76,8 +77,43 @@ if (update) {
 
    void  Tetris::keyEvent()
 {
-  update = true;
+ unsigned char ch ;//char类型最小最大值是-128和127，解决办法，改成现在的类型无符号类型(最小最大值是0..255
+bool rotateFlag = false;
+int dx = 0;
+  if (_kbhit()) {
+    ch = _getch();
+    //下面是常识，不需要记
+    // 如果按下方向按键，会自动返回两个字符
+    //如果按下 向上方向键， 会先后返回： 224 72 
+    //如果按下 向下方向键， 会先后返回： 224 80
+    //如果按下 向左方向键， 会先后返回： 224 75
+    //如果按下 向右方向键， 会先后返回： 224 77 
+    if (ch == 224) {
+      ch = _getch();
+      switch (ch) {
+        case 72:
+        rotateFlag = true;
+        break;
+        case 80;
+           delay = SPEED_QUICK;
+        break;
+        case 75;
+            dx = -1;
+        break;
+        case 77;
+        dx = 1;
+        default:
+        break;
+      }
+  }
 }
+ if (rotateFlag） {
+   //实现旋转
+   }
+
+  if (dx != 0) {
+ 
+ }
 
    void Tetris::updateWindow()
 {
