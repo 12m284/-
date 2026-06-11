@@ -21,7 +21,7 @@ private:
     int getDelay();
     void drop();
     voide clearLine();
-
+    void moveLeftRight(int offset);
 
 private:
 int delay;
