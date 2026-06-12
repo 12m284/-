@@ -191,7 +191,12 @@ void Tetris::moveLeftRight(int offset)
 
 void Tetris::rotate()
 {
+  if(curBlock->
   bakBlock =*curBlock;
-}
+  curBlock->rotate();
 
+  if(!curBlock->blockInMap(map)) {
+      *curBlock = barBlock;
+}
+}
 
