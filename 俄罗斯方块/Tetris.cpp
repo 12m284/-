@@ -189,9 +189,9 @@ void Tetris::moveLeftRight(int offset)
   }
 }
 
-void Tetris::rotate()
+void Tetris::rotate
 {
-  if(curBlock->
+  if(curBlock->getblockType() == 7) return;
   bakBlock =*curBlock;
   curBlock->rotate();
 
