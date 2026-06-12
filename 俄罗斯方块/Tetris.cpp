@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <conio.h>
-#include "Block.h>
+#include "Block.h"
 
 const int SPEED_NORMAL = 500;
 const int SPEED_QUICK = 50;
@@ -39,7 +39,7 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
        //初始化游戏区中的数据
  
   for (int i = 0; i < rows; i++) {
-   for (int j = 0; j < cols, j++) {
+   for (int j = 0; j < cols; j++) {
       map[i][j] = 0;
 }
 }
@@ -94,7 +94,7 @@ int dx = 0;
         case 72:
         rotateFlag = true;
         break;
-        case 80;
+        case 80:
            delay = SPEED_QUICK;
         break;
         case 75;
@@ -107,7 +107,7 @@ int dx = 0;
       }
   }
 }
- if (rotateFlag） {
+ if (rotateFlag) {
    //实现旋转
     rotate():
     update = ture;
@@ -116,7 +116,7 @@ int dx = 0;
 
   if (dx != 0) {
    moveLeftRight(dx);
-   update = ture;
+   update = true;
  }
 
    void Tetris::updateWindow()
@@ -127,7 +127,7 @@ int dx = 0;
 BeginBetchDraw();
   
   for (int i = 0; i < rows; i++) {
-    for (int j = 0; j < rows; i++) {
+    for (int j = 0; j < rows; j++) {
       if(map[i][j] == 0)contime;
 
       int x = j * lockSize + leftMargin;
