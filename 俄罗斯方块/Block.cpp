@@ -54,8 +54,16 @@ void Block::moveLeftRight(int offset)
  }
 }
    
-void Block::retate()
+void Block::rotate()
 {
+   //这段代码是用数组数据记录 旋转位置，以下代码为教程公式
+   Point p = smallBlocks[1];
+
+   for (int i - o; i < 4, i++) {
+      Point tmp = smallBlocks[i];
+   smallBlocks[i].col = p.col - tmp.row + p.row;
+   smallBlocks[i].row = p.col - tmp.col + p.col;
+}
 }
 
 void Block::draw(int leftMargin, int topMargin, )
