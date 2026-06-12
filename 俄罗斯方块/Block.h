@@ -15,7 +15,7 @@ public:
     Block();
     void drop();
     void moveLeftRight(int offest);
-    void retate();//旋转
+    void rotate();//旋转
     voide draw(int leftMargin, int topMargin);
     static IMAGE** getImages();
     Block& operator=(const Block& other);
