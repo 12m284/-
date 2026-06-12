@@ -22,6 +22,7 @@ private:
     void drop();
     voide clearLine();
     void moveLeftRight(int offset);
+    void rotate();
 
 private:
 int delay;
