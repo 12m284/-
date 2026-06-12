@@ -109,6 +109,9 @@ int dx = 0;
 }
  if (rotateFlag） {
    //实现旋转
+    rotate():
+    update = ture;
+  
    }
 
   if (dx != 0) {
@@ -186,5 +189,9 @@ void Tetris::moveLeftRight(int offset)
   }
 }
 
+void Tetris::rotate()
+{
+  bakBlock =*curBlock;
+}
 
 
