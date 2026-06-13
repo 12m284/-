@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <conio.h>
 #include "Block.h"
+#include <mmsystem.h>
+#pragma comment (lib,"winmm.lib")
 
 const int SPEED_NORMAL = 500;
 const int SPEED_QUICK = 50;
