@@ -177,6 +177,30 @@ void Tetris::drop()
 
 void Tetris::clearLine()
 {
+  int k = rows - 1;//存储数据的行数
+  for (int i = rows - 1; i >= 0; i--) {
+  //检查第i行是否满行
+    int count = 0;
+    for (int j = 0; j < cols; j++) {
+      if (map[i][j]) {
+        cout++;
+      }
+      map[k][j] = map[i][j];//一边扫描一边存储
+    }
+    if(count < cols) {//不是满行
+      k--;
+    }
+  else { // count == cols 满行
+    lines++;
+  }
+  }
+
+  if (lines > 0) {
+    // 计算得分
+    // todo.
+    mciSendString("play res/xiaochu1.mp3", 0, 0, 0);
+    update = ture;
+  }
 }
 
 void Tetris::moveLeftRight(int offset)
