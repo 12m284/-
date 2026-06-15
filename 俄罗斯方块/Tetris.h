@@ -23,6 +23,7 @@ private:
     voide clearLine();
     void moveLeftRight(int offset);
     void rotate();
+    void drawScore();/绘制当前分数
 
 private:
 int delay;
