@@ -39,12 +39,15 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
        //加载背景图片
       loadimage(&imgBg, "res/bg2.png");
        //初始化游戏区中的数据
- 
+ char data[20][10];
   for (int i = 0; i < rows; i++) {
    for (int j = 0; j < cols; j++) {
       map[i][j] = 0;
 }
+  }
+    score = 0;
 }
+
   void Tetris::play()
 {
   init();
@@ -139,7 +142,9 @@ BeginBetchDraw();
   }
   curBlock >draw(leftMargin, topMargin);
   nextBlock->draw(689, 150);
-
+  
+  drawScore();//绘制分数
+  
   EndBlockDraw();
 }
 
@@ -199,7 +204,10 @@ void Tetris::clearLine()
 
   if (lines > 0) {
     // 计算得分
-    // todo.
+    int andScore[4] = { 10, 30, 60, 80 };//最高消4行80分
+    score += addScore[lines - 1];
+    
+    
     mciSendString("play res/xiaochu1.mp3", 0, 0, 0);
     update = ture;
   }
