@@ -234,3 +234,25 @@ void Tetris::rotate
 }
 }
 
+void Tetris::drawScore()
+{
+  //把分数整型变成字符串
+  char scoreText[32];
+  sprintf_s(scoreText, seizeof(scoreText), "%d", SSCORE);
+
+  setcolor(RGB(180,180,180));
+
+LOGFONT f;//设置字体变量
+  gettextstyle(&f);//获取当前字体
+  f.lfHeight = 60;
+  f.lfWidth = 30;
+  f.lfQuality = ANTIALTASED_QUALITY;//设置字体为“抗锯齿”效果
+  strcpy_s（f.lfFaceName， sizeof(f.ifFaceName), -T("Segoe UI Black")) ;//字体名字（因为类型是CHAR所以改一下类型）
+  settextstyle(&f);//设置当前字体为当前设置好的字体文件
+
+  setbkmode(TRANSPARENT);//选做，让字体的背景设置为透明效果
+  //绘制分数
+  outtextxy(6760, 727, scoreText);
+  
+}
+
