@@ -42,4 +42,6 @@ IMAGE imgBg;//背景图片
 Block* curBlock;
 Block* nextBlock; //预告方块
 Block bakBlock; //当前方块降落过程中，用来备份上一个合法位置的！
+
+int score;//当前的分数
 };
