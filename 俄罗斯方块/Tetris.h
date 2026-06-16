@@ -45,4 +45,6 @@ Block* nextBlock; //预告方块
 Block bakBlock; //当前方块降落过程中，用来备份上一个合法位置的！
 
 int score;//当前的分数
+int level;//当前关卡
+int lineCount; //当前已经消除了多少行
 };
