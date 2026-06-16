@@ -212,6 +212,10 @@ void Tetris::clearLine()
     
     mciSendString("play res/xiaochu1.mp3", 0, 0, 0);
     update = ture;
+
+    //每100分一个级别 0 100 第一关 101 200第2关
+     level = (score + 99)/ 100;
+       
   }
 }
 
