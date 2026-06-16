@@ -46,6 +46,8 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
 }
   }
     score = 0;
+  lineCount - 0;
+  level = 1;
 }
 
   void Tetris::play()
