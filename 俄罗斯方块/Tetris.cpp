@@ -6,8 +6,10 @@
 #include <mmsystem.h>
 #pragma comment (lib,"winmm.lib")
 
-const int SPEED_NORMAL = 500;
-const int SPEED_QUICK = 50;
+#define MAX_LEEVEL 5
+//const int SPEED_NORMAL = 500;//ms
+const int SPEED_NORMAL[MAX_LEEVEL] = { 500, 300, 150, 100 ,80 };
+const int SPEED_QUICK = 30;
 
 Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
 {
