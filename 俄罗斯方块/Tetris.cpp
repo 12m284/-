@@ -217,7 +217,8 @@ void Tetris::clearLine()
 
     //每100分一个级别 0 100 第一关 101 200第2关
      level = (score + 99)/ 100;
-       
+
+    lineCount += lines;
   }
 }
 
