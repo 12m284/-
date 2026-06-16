@@ -31,7 +31,7 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
   void Tetris::init()
 {
   
-      delay = SPEED_NORMAL;
+      delay = SPEED_NORMAL[0];
 
       //配置随机种子
       srand(time(NULL));
@@ -183,7 +183,7 @@ void Tetris::drop()
       curBlock = nextBlock;
     nextBlock = new Block;
   }
-  delay = SPEED_NORMAL;
+  delay = SPEED_NORMAL[level-1];
 }
 
 void Tetris::clearLine()
@@ -259,8 +259,18 @@ LOGFONT f;//设置字体变量
   settextstyle(&f);//设置当前字体为当前设置好的字体文件
 
   setbkmode(TRANSPARENT);//选做，让字体的背景设置为透明效果
-  //绘制分数
-  outtextxy(6760, 727, scoreText);
   
+  //绘制分数
+  outtextxy(670, 727, scoreText);
+//绘制消除了几行
+  sprintf_s(scoreText,sizeof(scoreText), "%d",lineCount);
+  gettextstyle(&f);
+  int xPos = 224 f.lfWidth * strlen(scoreText);
+    outtextxy(xPos,817, scoreText);
+
+  //绘制当前是第几关
+  sprintf s(scoreText,sizeof(scoreText), "%d",level);
+    outtextxy(224-30, 727, scoreText);
+
 }
 
