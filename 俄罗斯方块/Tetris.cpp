@@ -284,8 +284,10 @@ LOGFONT f;//设置字体变量
     outtextxy(xPos,817, scoreText);
 
   //绘制当前是第几关
-  sprintf s(scoreText,sizeof(scoreText), "%d",level);
+  sprintf_s(scoreText,sizeof(scoreText), "%d",level);
     outtextxy(224-30, 727, scoreText);
 
+  sprintf_s(scoreText,sizeof(scoreText), "%d", highestScore);
+    outtextxy(670, 817, scoreText);
 }
 
