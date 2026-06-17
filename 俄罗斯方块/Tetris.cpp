@@ -2,11 +2,15 @@
 #include <time.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <iostream>
+#include <fstream>
 #include "Block.h"
+
 #include <mmsystem.h>
 #pragma comment (lib,"winmm.lib")
 
 #define MAX_LEEVEL 5
+#define REDCORDER_FILE "recorder.txt"
 //const int SPEED_NORMAL = 500;//ms
 const int SPEED_NORMAL[MAX_LEEVEL] = { 500, 300, 150, 100 ,80 };
 const int SPEED_QUICK = 30;
@@ -50,6 +54,8 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
     score = 0;
   lineCount - 0;
   level = 1;
+
+  
 }
 
   void Tetris::play()
@@ -77,11 +83,19 @@ if (update) {
     updateWindow();
   //更新游戏的数据
   clearLine();
-
-
-  
   }
  }
+//初始化最高分
+ifstream file(REDCORDER_FILE);
+  if (!file.is_opem()) {
+    cout << REDCORDER_FILE << "打开失败" << endl;
+    highestScore = 0;
+    
+  }
+  else {
+     file >> highestScore;
+  }
+  file.colse();//关闭文件
 }
 
    void  Tetris::keyEvent()
