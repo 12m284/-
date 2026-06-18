@@ -196,6 +196,9 @@ void Tetris::drop()
       delete curBlock;
       curBlock = nextBlock;
     nextBlock = new Block;
+
+    //检查游戏是否结束
+    checkOver();
   }
   delay = SPEED_NORMAL[level-1];
 }
