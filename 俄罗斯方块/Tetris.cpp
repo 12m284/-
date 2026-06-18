@@ -34,7 +34,7 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
 }
   void Tetris::init()
 {
-  
+      mciSendString("play res/bg.map3 repeat", 0, 0, 0,);//repeat如果重复就循环播放
       delay = SPEED_NORMAL[0];
 
       //配置随机种子
@@ -326,4 +326,18 @@ void Tetris::saveScore()
       file.close();
 }
 }
+
+void Tetris::displayOver()
+{
+  mciSendString("stop res/bg.map3 repeat", 0, 0, 0);
+
+  //胜利结束，还是失败结束
+  if(level < MAX_LEVEL) {
+  
+}
+
+
+
+
+
 
