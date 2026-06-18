@@ -44,6 +44,10 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
   
        //加载背景图片
       loadimage(&imgBg, "res/bg2.png");
+
+      loadimage(&imgWin, "res/win.png");
+      loadimage(&imgOver, "res/over.png");
+  
        //初始化游戏区中的数据
  char data[20][10];
   for (int i = 0; i < rows; i++) {
@@ -332,11 +336,15 @@ void Tetris::displayOver()
   mciSendString("stop res/bg.map3 repeat", 0, 0, 0);
 
   //胜利结束，还是失败结束
-  if(level < MAX_LEVEL) {
-  
+  if(level <= MAX_LEVEL) {
+    putimage(262, 361, &imgOver);
+    mciSendString("play res/over.map3 repeat", 0, 0, 0);
 }
-
-
+  else {
+    putimage(262, 361, &imgWin);
+    mciSendString("play res/win.map3 repeat", 0, 0, 0);
+}
+}
 
 
 
