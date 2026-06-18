@@ -83,8 +83,20 @@ if (update) {
     updateWindow();
   //更新游戏的数据
   clearLine();
+  
   }
+    if (gameOver) {
+      // 保存分数
+      saveScore();
+
+      //更新游戏结束界面
+      displayOver();
+
+      system("pause");
+      init(); //重新开始开局
+    }   
  }
+}
 //初始化最高分
 ifstream file(REDCORDER_FILE);
   if (!file.is_opem()) {
@@ -96,6 +108,8 @@ ifstream file(REDCORDER_FILE);
      file >> highestScore;
   }
   file.colse();//关闭文件
+
+  gameOver = false;
 }
 
    void  Tetris::keyEvent()
@@ -234,7 +248,9 @@ void Tetris::clearLine()
 
     //每100分一个级别 0 100 第一关 101 200第2关
      level = (score + 99)/ 100;
-
+     if (level > MAX LEVEL) {
+       gameOver = true;
+     }
     lineCount += lines;
   }
 }
@@ -296,7 +312,7 @@ LOGFONT f;//设置字体变量
 
 void Tetris::checkOver()
 {
-   curBlock->blockInMap(map) == false;
+  gameOver = (curBlock->blockInMap(map) == false);
   
 }
 
