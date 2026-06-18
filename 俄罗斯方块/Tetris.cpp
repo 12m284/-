@@ -59,7 +59,19 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
   lineCount - 0;
   level = 1;
 
-  
+ //初始化最高分
+ifstream file(REDCORDER_FILE);
+  if (!file.is_opem()) {
+    cout << REDCORDER_FILE << "打开失败" << endl;
+    highestScore = 0;
+    
+  }
+  else {
+     file >> highestScore;
+  }
+  file.colse();//关闭文件
+
+  gameOver = false;
 }
 
   void Tetris::play()
@@ -100,20 +112,6 @@ if (update) {
       init(); //重新开始开局
     }   
  }
-}
-//初始化最高分
-ifstream file(REDCORDER_FILE);
-  if (!file.is_opem()) {
-    cout << REDCORDER_FILE << "打开失败" << endl;
-    highestScore = 0;
-    
-  }
-  else {
-     file >> highestScore;
-  }
-  file.colse();//关闭文件
-
-  gameOver = false;
 }
 
    void  Tetris::keyEvent()
