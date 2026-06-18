@@ -7,7 +7,7 @@
 #include "Block.h"
 
 #include <mmsystem.h>
-#pragma comment (lib,"winmm.lib")
+#pragma comment (lib, "winmm.lib")
 
 #define MAX_LEEVEL 5
 #define REDCORDER_FILE "recorder.txt"
