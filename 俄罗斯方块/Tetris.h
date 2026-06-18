@@ -20,10 +20,11 @@ private:
 //第一次调用该函数，返回0
     int getDelay();
     void drop();
-    voide clearLine();
+    void clearLine();
     void moveLeftRight(int offset);
     void rotate();
-    void drawScore();/绘制当前分数
+    void drawScore(); //绘制当前分数
+    void checkOver(); //检查游戏是否结束
 
 private:
 int delay;
