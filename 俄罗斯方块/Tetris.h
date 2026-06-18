@@ -26,6 +26,8 @@ private:
     void drawScore(); //绘制当前分数
     void checkOver(); //检查游戏是否结束
     void saveScore(); //保存最高分
+    void displayOver();//绘制游戏结束画面
+
 
 private:
 int delay;
