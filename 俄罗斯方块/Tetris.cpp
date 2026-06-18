@@ -316,6 +316,14 @@ void Tetris::checkOver()
   
 }
 
+void Tetris::saveScore()
+{
+    if(score > highestScore) {
+      highestScore = score;
 
-
+      ofstream file(RECORDER FILE);
+      file << highestScore;
+      file.close();
+}
+}
 
