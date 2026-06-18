@@ -49,4 +49,5 @@ int score;//当前的分数
 int highestScore; //最高分
 int level;//当前关卡
 int lineCount; //当前已经消除了多少行
+bool gameOver; //游戏是否已经结束
 };
