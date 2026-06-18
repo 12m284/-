@@ -294,3 +294,12 @@ LOGFONT f;//设置字体变量
     outtextxy(670, 817, scoreText);
 }
 
+void Tetris::checkOver()
+{
+   curBlock->blockInMap(map) == false;
+  
+}
+
+
+
+
