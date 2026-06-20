@@ -39,7 +39,7 @@ bool update; //是否更新
 vector<vector<int>> map;
 int row;
 int col;
-int leftMargin,;
+int leftMargin;
 int topMargin;
 int blockSize;
 IMAGE imgBg;//背景图片
