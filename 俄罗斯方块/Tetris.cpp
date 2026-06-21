@@ -9,16 +9,16 @@
 #include <mmsystem.h>
 #pragma comment (lib, "winmm.lib")
 
-#define MAX_LEEVEL 5
-#define REDCORDER_FILE "recorder.txt"
+#define MAX_LEVEL 5
+#define RECORDER_FILE "recorder.txt"
 //const int SPEED_NORMAL = 500;//ms
-const int SPEED_NORMAL[MAX_LEEVEL] = { 500, 300, 150, 100 ,80 };
+const int SPEED_NORMAL[MAX_LEVEL] = { 500, 300, 150, 100 ,80 };
 const int SPEED_QUICK = 30;
 
 Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
 {
-  this->rows = rows;
-  this->cols = cols;
+  this->row = rows;
+  this->col = cols;
   this->leftMargin = left;
   this->topMargin = top;
   this->blockSize = blockSize;
@@ -34,7 +34,7 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
 }
   void Tetris::init()
 {
-      mciSendString("play res/bg.map3 repeat", 0, 0, 0,);//repeat如果重复就循环播放
+      mciSendString("play res/bg.mp3 repeat", 0, 0, 0);
       delay = SPEED_NORMAL[0];
 
       //配置随机种子
@@ -50,26 +50,26 @@ Tetris::Tetris(int rows, int cols, int left, int top, int blockSize)
   
        //初始化游戏区中的数据
  char data[20][10];
-  for (int i = 0; i < rows; i++) {
-   for (int j = 0; j < cols; j++) {
+  for (int i = 0; i < row; i++) {
+   for (int j = 0; j < col; j++) {
       map[i][j] = 0;
 }
   }
     score = 0;
-  lineCount - 0;
+  lineCount = 0;
   level = 1;
 
  //初始化最高分
-ifstream file(REDCORDER_FILE);
-  if (!file.is_opem()) {
-    cout << REDCORDER_FILE << "打开失败" << endl;
+ifstream file(RECORDER_FILE);
+  if (!file.is_open()) {
+    cout << RECORDER_FILE << "打开失败" << endl;
     highestScore = 0;
     
   }
   else {
      file >> highestScore;
   }
-  file.colse();//关闭文件
+  file.close();
 
   gameOver = false;
 }
@@ -78,9 +78,9 @@ ifstream file(REDCORDER_FILE);
 {
   init();
 
-nextBlock = new Block;//生成预告方块
-curBlock = nextBlock;//更新当前方块
-nextBlock = new Block;//再生成下一个方块
+nextBlock = new Block;
+curBlock = nextBlock;
+nextBlock = new Block;
   
   int timer = 0;
   while (1) {
@@ -90,7 +90,7 @@ nextBlock = new Block;//再生成下一个方块
       timer += getDelay();
       if  (timer > delay) {
            timer = 0;
-          dorp();
+          drop();
            update = true;
     }
 if (update) {
@@ -109,14 +109,14 @@ if (update) {
       displayOver();
 
       system("pause");
-      init(); //重新开始开局
+      init();
     }   
  }
 }
 
    void  Tetris::keyEvent()
 {
- unsigned char ch ;//char类型最小最大值是-128和127，解决办法，改成现在的类型无符号类型(最小最大值是0..255
+ unsigned char ch ;
 bool rotateFlag = false;
 int dx = 0;
   if (_kbhit()) {
@@ -136,10 +136,10 @@ int dx = 0;
         case 80:
            delay = SPEED_QUICK;
         break;
-        case 75;
+        case 75:
             dx = -1;
         break;
-        case 77;
+        case 77:
         dx = 1;
         default:
         break;
@@ -148,8 +148,8 @@ int dx = 0;
 }
  if (rotateFlag) {
    //实现旋转
-    rotate():
-    update = ture;
+    rotate();
+    update = true;
   
    }
 
@@ -157,29 +157,30 @@ int dx = 0;
    moveLeftRight(dx);
    update = true;
  }
+}
 
-   void Tetris::updateWindow()
+    void Tetris::updateWindow()
 {
-  putimage(0, 0, &imgBg); //绘制背景图片
+  putimage(0, 0, &imgBg);
   
  IMAGE** imgs = Block::getImages();
-BeginBetchDraw();
+ BeginBatchDraw();
   
-  for (int i = 0; i < rows; i++) {
-    for (int j = 0; j < rows; j++) {
-      if(map[i][j] == 0)contime;
+  for (int i = 0; i < row; i++) {
+    for (int j = 0; j < col; j++) {
+      if(map[i][j] == 0) continue;
 
-      int x = j * lockSize + leftMargin;
+      int x = j * blockSize + leftMargin;
       int y = i * blockSize + topMargin;
-      putimage(x, y, img[map[i][j]-1]);
+      putimage(x, y, imgs[map[i][j]-1]);
         }
   }
-  curBlock >draw(leftMargin, topMargin);
+  curBlock->draw(leftMargin, topMargin);
   nextBlock->draw(689, 150);
   
-  drawScore();//绘制分数
+  drawScore();
   
-  EndBlockDraw();
+  EndBatchDraw();
 }
 
 //第一次调用，返回0
@@ -188,7 +189,7 @@ int Tetris::getDelay()
 {
   static unsigned long long lastTime = 0;
   
-  usigned long long currentTime = GetTickCount();
+  unsigned long long currentTime = GetTickCount();
 
   if(lastTime == 0) {
     lastTime = currentTime;
@@ -204,10 +205,10 @@ int Tetris::getDelay()
 void Tetris::drop()
 {
   bakBlock = *curBlock;
-  curBlock->dorp();
+  curBlock->drop();
 
   if (!curBlock->blockInMap(map)) {
-      //把这个方块“固化”
+      //把这个方块"固化"
       bakBlock.solidify(map);
       delete curBlock;
       curBlock = nextBlock;
@@ -221,36 +222,37 @@ void Tetris::drop()
 
 void Tetris::clearLine()
 {
-  int k = rows - 1;//存储数据的行数
-  for (int i = rows - 1; i >= 0; i--) {
+  int k = row - 1;
+  int lines = 0;
+  for (int i = row - 1; i >= 0; i--) {
   //检查第i行是否满行
     int count = 0;
-    for (int j = 0; j < cols; j++) {
+    for (int j = 0; j < col; j++) {
       if (map[i][j]) {
-        cout++;
+        count++;
       }
-      map[k][j] = map[i][j];//一边扫描一边存储
+      map[k][j] = map[i][j];
     }
-    if(count < cols) {//不是满行
+    if(count < col) {
       k--;
     }
-  else { // count == cols 满行
+  else {
     lines++;
   }
   }
 
   if (lines > 0) {
     // 计算得分
-    int andScore[4] = { 10, 30, 60, 80 };//最高消4行80分
+    int addScore[4] = { 10, 30, 60, 80 };
     score += addScore[lines - 1];
     
     
     mciSendString("play res/xiaochu1.mp3", 0, 0, 0);
-    update = ture;
+    update = true;
 
     //每100分一个级别 0 100 第一关 101 200第2关
-     level = (score + 99)/ 100;
-     if (level > MAX LEVEL) {
+     level = (score + 99) / 100;
+     if (level > MAX_LEVEL) {
        gameOver = true;
      }
     lineCount += lines;
@@ -259,49 +261,49 @@ void Tetris::clearLine()
 
 void Tetris::moveLeftRight(int offset)
 {
-  bakBlock =*curBlock;//备份防止方块掉出边界
+  bakBlock = *curBlock;
    curBlock->moveLeftRight(offset);
  
   if(!curBlock->blockInMap(map)) {
-      *curBlock = barBlock;//如果方块位置不合法，则保持原样
+      *curBlock = bakBlock;
   }
 }
 
-void Tetris::rotate
+void Tetris::rotate()
 {
-  if(curBlock->getblockType() == 7) return;
-  bakBlock =*curBlock;
+  if(curBlock->getBlockType() == 7) return;
+  bakBlock = *curBlock;
   curBlock->rotate();
 
   if(!curBlock->blockInMap(map)) {
-      *curBlock = barBlock;
-}
+      *curBlock = bakBlock;
+  }
 }
 
 void Tetris::drawScore()
 {
   //把分数整型变成字符串
   char scoreText[32];
-  sprintf_s(scoreText, seizeof(scoreText), "%d", SSCORE);
+  sprintf_s(scoreText, sizeof(scoreText), "%d", score);
 
   setcolor(RGB(180,180,180));
 
-LOGFONT f;//设置字体变量
-  gettextstyle(&f);//获取当前字体
+LOGFONT f;
+  gettextstyle(&f);
   f.lfHeight = 60;
   f.lfWidth = 30;
-  f.lfQuality = ANTIALTASED_QUALITY;//设置字体为“抗锯齿”效果
-  strcpy_s（f.lfFaceName， sizeof(f.ifFaceName), -T("Segoe UI Black")) ;//字体名字（因为类型是CHAR所以改一下类型）
-  settextstyle(&f);//设置当前字体为当前设置好的字体文件
+  f.lfQuality = ANTIALIASED_QUALITY;
+  strcpy_s(f.lfFaceName, sizeof(f.lfFaceName), _T("Segoe UI Black"));
+  settextstyle(&f);
 
-  setbkmode(TRANSPARENT);//选做，让字体的背景设置为透明效果
+  setbkmode(TRANSPARENT);
   
   //绘制分数
   outtextxy(670, 727, scoreText);
 //绘制消除了几行
   sprintf_s(scoreText,sizeof(scoreText), "%d",lineCount);
   gettextstyle(&f);
-  int xPos = 224 f.lfWidth * strlen(scoreText);
+  int xPos = 224 - f.lfWidth * strlen(scoreText);
     outtextxy(xPos,817, scoreText);
 
   //绘制当前是第几关
@@ -323,7 +325,7 @@ void Tetris::saveScore()
     if(score > highestScore) {
       highestScore = score;
 
-      ofstream file(RECORDER FILE);
+      ofstream file(RECORDER_FILE);
       file << highestScore;
       file.close();
 }
@@ -331,19 +333,16 @@ void Tetris::saveScore()
 
 void Tetris::displayOver()
 {
-  mciSendString("stop res/bg.map3 repeat", 0, 0, 0);
+  mciSendString("stop res/bg.mp3", 0, 0, 0);
 
   //胜利结束，还是失败结束
   if(level <= MAX_LEVEL) {
     putimage(262, 361, &imgOver);
-    mciSendString("play res/over.map3 repeat", 0, 0, 0);
+    mciSendString("play res/over.mp3", 0, 0, 0);
 }
   else {
     putimage(262, 361, &imgWin);
-    mciSendString("play res/win.map3 repeat", 0, 0, 0);
+    mciSendString("play res/win.mp3", 0, 0, 0);
 }
 }
-
-
-
 
