@@ -1,5 +1,5 @@
 #pragma once
-#include <graphcs.h> //需要安装easyx图形库
+#include <graphics.h>
 #include <vector>
 using namespace std;
 struct Point {
@@ -14,23 +14,23 @@ class Block
 public:
     Block();
     void drop();
-    void moveLeftRight(int offest);
-    void rotate();//旋转
-    voide draw(int leftMargin, int topMargin);
+    void moveLeftRight(int offset);
+    void rotate();
+    void draw(int leftMargin, int topMargin);
     static IMAGE** getImages();
     Block& operator=(const Block& other);
 
-    bool blockInMap(const vector<vector<int>>&map);
+    bool blockInMap(const vector<vector<int>>& map);
      //Point* getSmallBlocks();
      void solidify(vector<vector<int>>& map);
-     int getblockType();
+     int getBlockType();
 
 private:
-int blockType; //方块的类型
+int blockType;
 Point smallBlocks[4];
 IMAGE *img;
 
-static IMAGE* imgs[7]; //int* data[7]; //int** getData()
+static IMAGE* imgs[7];
 static int size;
 };
 
